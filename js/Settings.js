@@ -13,7 +13,7 @@ const list = [
       value: 'wiichooo'
     },
   ];
-  
+
 export default class Settings extends React.Component {
   static navigationOptions = {
     title: 'Settings',
@@ -25,7 +25,7 @@ export default class Settings extends React.Component {
       />
     ),
   };
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +34,7 @@ export default class Settings extends React.Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation;  
+    const { navigate } = this.props.navigation;
     return (
     <View style={styles.container}>  
     </View>

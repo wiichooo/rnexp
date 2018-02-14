@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
 
 export default class Main extends React.Component {
   static navigationOptions = ({ navigation }) => {
+      const { params = {} } = navigation.state;
     title = 'Home';
     tabBarIcon = ({focused}) => (
       <Ionicons
@@ -41,20 +42,27 @@ export default class Main extends React.Component {
           style={{ color: focused ? '#33A3F4' : '#949494'}}
       />
     );
-    headerRight =  (
-      
+  /*  headerRight =  (
+
       <Button
         title={'Add'}
         onPress = {() => navigation.navigate('Add')}
       />
-    );
-    return { title, tabBarIcon, headerRight };
+    );*/
+    return { title, tabBarIcon };
   /*  header: <View style={styles.header}>
     <Text>Home</Text>
     <SearchBar lightTheme/>
   </View>*/
 	};
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    }
+  }
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <ScrollView style={styles.container}>
         {
@@ -66,8 +74,10 @@ export default class Main extends React.Component {
           </Text>
           <Image style={styles.logo} source={{ uri: item.Image }} />
           <Button
-                  title="See Details"
-                  onPress= {() => alert('Detalles')}
+                  title="See Data"
+                  onPress={() =>
+                        navigate('Data', { name: item.Titulo })
+                      }
                   />
           </View>
         </Card>

@@ -6,12 +6,13 @@ import SettingScreen from './js/Settings'
 import EditScreen from './js/Edit'
 import DetailsScreen from './js/Details'
 import AddScreen from './js/Add'
+import DataScreen from './js/Data'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 
 export default class App extends React.Component {
   render() {
     return (
-        <ReactNativeTest />
+        <TabScreens />
     );
   }
 }
@@ -28,10 +29,10 @@ const Screens = TabNavigator({
   },
 });
 
-const ReactNativeTest = StackNavigator({
+const TabScreens = StackNavigator({
   //SignUp: { screen: SignUpScreen },
   //LogIn: { screen: LogInScreen },
   Home: { screen: Screens },
   Edit: { screen: EditScreen },
-  Add: { screen: AddScreen }
+  Data: { screen: DataScreen }
 });
