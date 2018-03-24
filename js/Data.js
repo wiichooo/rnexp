@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ActivityIndicator }
 from 'react-native';
 import { List, ListItem } from 'react-native-elements';
-import { Video } from 'expo'
+import { Video, ScreenOrientation } from 'expo'
+import VideoPlayer from '@expo/videoplayer';
 
 export default class DataScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -22,16 +23,19 @@ export default class DataScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={{fontSize:22, paddingTop:18, paddingLeft:15, fontWeight: 'bold'}}>{params.name}:</Text>
-        <Video
-         source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
-         rate={1.0}
-         volume={1.0}
-         muted={false}
-         resizeMode="cover"
-         shouldPlay
-         isLooping
-         style={{ width: 300, height: 300 }}
-       />
+        <VideoPlayer
+          videoProps={{
+            shouldPlay: true,
+            
+            resizeMode: Video.RESIZE_MODE_CONTAIN,
+            source: {
+              uri: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
+            },
+          }}
+          isPortrait={true}
+          switchToLandscape={()=>ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE)}
+          playFromPositionMillis={0}
+        />
       </View>
     );
   }
