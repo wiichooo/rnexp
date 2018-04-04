@@ -16,6 +16,7 @@ export default class EditScreen extends React.Component {
     if (params.isSaving) {
       headerRight = <ActivityIndicator />;
     }
+     
     return { title: `Add`, headerRight };
   };
 
