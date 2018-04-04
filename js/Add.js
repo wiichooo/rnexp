@@ -18,6 +18,8 @@ export default class EditScreen extends React.Component {
     }
      
     return { title: `Add`, headerRight };
+
+    
   };
 
   state = {
